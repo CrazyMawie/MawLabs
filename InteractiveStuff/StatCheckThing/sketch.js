@@ -135,7 +135,13 @@ function setup() {
 
 		} else { complicationEnabled = !complicationEnabled; }});
 
-
+		let mobileBtn = createButton('Mobile?');
+		let relX_mobile = 980;
+		let relY_mobile = 60;
+		mobileBtn.position(relX_mobile + canvasOffsetX, relY_mobile + canvasOffsetY);
+		uiElements.push({el: mobileBtn, relX: relX_mobile, relY: relY_mobile});
+		mobileBtn.mousePressed(() => { isMobile = !isMobile; })
+		
 		let dec = createButton('-');
 		let relX_dec = relX_base + 80;
 		let relY_dec = relY_base + 35;
