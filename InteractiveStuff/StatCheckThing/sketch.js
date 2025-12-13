@@ -296,6 +296,12 @@ function draw() {
 	}
 
 	// Display End Screen based on results
+if (isMobile) {
+		image(errorImg, width/2, height/2, width/2, height/2);
+	} else {
+
+}
+	
 	if (displayEndScreen) {
 
 		if (errorTriggered) {
