@@ -8,6 +8,7 @@ let ballInMotion = false;
 let complicationEnabled = true;
 let displayEndScreen = false;
 let errorTriggered = false;
+let isMobile = false;
 
 // Per-Vertex Default Size Values (1..10)
 let pointSizes = [5, 5, 5, 5, 5];
@@ -32,6 +33,10 @@ function preload() {
 }
 
 function setup() {
+	let userAgent = navigator.userAgent;
+  	let mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  	isMobile = mobileRegex.test(userAgent);
+	
 	createCanvas(1420, 800, document.getElementById('sketch-container'));
 	let canvasRect = document.querySelector('canvas').getBoundingClientRect();
 	let canvasOffsetX = canvasRect.left;
@@ -187,11 +192,15 @@ function setup() {
 }
 
 function windowResized() {
+	if (isMobile) {
+
+	} else {
 	let canvasRect = document.querySelector('canvas').getBoundingClientRect();
 	let canvasOffsetX = canvasRect.left;
 	let canvasOffsetY = canvasRect.top;
 	for (let item of uiElements) {
 		item.el.position(item.relX + canvasOffsetX, item.relY + canvasOffsetY);
+	}
 	}
 }
 
