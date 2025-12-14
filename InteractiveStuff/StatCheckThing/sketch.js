@@ -59,6 +59,9 @@ function setup() {
 	let userAgent = navigator.userAgent;
   	let mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
   	isMobile = mobileRegex.test(userAgent);
+	if (isMobile) {
+		isSound = false;
+	}
 
 	createCanvas(1420, 800, document.getElementById('sketch-container'));
 	let canvasRect = document.querySelector('canvas').getBoundingClientRect();
@@ -176,7 +179,7 @@ function setup() {
 		let relY_sound = 60;
 		soundBtn.position(relX_sound + canvasOffsetX, relY_sound + canvasOffsetY);
 		uiElements.push({el: soundBtn, relX: relX_sound, relY: relY_sound});
-		soundBtn.mousePressed(() => { isSound = !isSound; if (isSound){
+		soundBtn.mousePressed(() => {if (isMobile === false) {isSound = !isSound; } if (isSound){
 		buttonSnd.play();
 	} })
 
